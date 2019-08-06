@@ -1,18 +1,12 @@
 ﻿@model FinalProject.DTO.CandidateDTO
 @using FinalProject.DTO
 @using FinalProject.Models
-
 @section title{
-
     Candidate - @ViewBag.DataView["title"]
-
 }
-
 @section content{
-
-
-    @Html.ValidationSummary()
-
+    <h2><center>Candidate | Interviewed | Edit Candidate interviewed</center></h2>
+    <hr class="bg-blue" />
     <div class="container">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -27,18 +21,16 @@
                 <div class="tab-pane fade show active" id="nav-personal_information" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
                         <div class="col-sm">
-
                             <div class="form-group">
                                 <label for="CandidateName">ID</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_ID, new { @class = "form-control", @id = "CandidateId" })
                             </div>
 
-
                             <div class="form-group">
                                 <label for="CandidateName">Full Name</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_NAME, new { @class = "form-control", @id = "CandidateName" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_NAME, null, new { @class = "text-danger" })
                             </div>
-
                             <div class="form-group">
                                 <label for="CandidateName">Gender</label>
                                 <select class="form-control" id="GENDER" name="GENDER_ID">
@@ -48,17 +40,15 @@
                                     }
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="CANDIDATE_PLACE_BIRTH">Place Of Birth</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_PLACE_BIRTH, new { @class = "form-control", @id = "CANDIDATE_PLACE_BIRTH" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PLACE_BIRTH, null, new { @class = "text-danger" })
                             </div>
-
                             <div class="form-group">
                                 <label for="CANDIDATE_PLACE_BIRTH">BIRTH DATE</label>
                                 <input type="datetime" value="@Convert.ToDateTime(Model.CANDIDATE_BIRTH_DATE).ToString("yyyy-MM-dd")" name="CANDIDATE_BIRTH_DATE" class="form-control" />
                             </div>
-
                             <div class="form-group">
                                 <label for="GENDER_ID">Religion</label>
                                 <select class="form-control" id="RELIGION_ID" name="RELIGION_ID">
@@ -68,7 +58,7 @@
                                     }
                                 </select>
                             </div>
-                            
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="file_pict">Upload</span>
@@ -78,48 +68,46 @@
                                     <label class="custom-file-label" for="file_pict">Choose file picture</label>
                                 </div>
                             </div>
-
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
+                                <img id="output" width="300" />
+                            </div>
                         </div>
-
                         @*mid side form*@
                         <div class="col-sm">
+                            <div class="form-group">
+                                <label for="CANDIDATE_CURRENT_ADDRESS">Address</label>
+                                @Html.TextAreaFor(m => m.CANDIDATE_CURRENT_ADDRESS, new { @class = "form-control", @id = "CANDIDATE_CURRENT_ADDRESS" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_CURRENT_ADDRESS, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="PARENT_ADDRESS">Parent Address</label>
+                                @Html.TextAreaFor(m => m.PARENT_ADDRESS, new { @class = "form-control", @id = "PARENT_ADDRESS" })
+                            </div>
+                            <div class="form-group">
+                                <label for="TELEPHONE_NUMBER">Telephone Number</label>
+                                @Html.TextBoxFor(m => m.TELEPHONE_NUMBER, new { @class = "form-control", @id = "TELEPHONE_NUMBER" })
+                            </div>
+                            <div class="form-group">
+                                <label for="CANDIDATE_EMAIL">Email</label>
+                                @Html.TextBoxFor(m => m.CANDIDATE_EMAIL, new { @class = "form-control", @id = "CANDIDATE_EMAIL" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_EMAIL, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="CANDIDATE_PHONENUMBER">Phone Number</label>
+                                @Html.TextBoxFor(m => m.CANDIDATE_PHONENUMBER, new { @class = "form-control", @id = "CANDIDATE_PHONENUMBER" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHONENUMBER, null, new { @class = "text-danger" })
+                            </div>
 
-                                <div class="form-group">
-                                    <label for="CANDIDATE_CURRENT_ADDRESS">Address</label>
-                                    @Html.TextAreaFor(m => m.CANDIDATE_CURRENT_ADDRESS, new { @class = "form-control", @id = "CANDIDATE_CURRENT_ADDRESS" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="PARENT_ADDRESS">Parent Address</label>
-                                    @Html.TextAreaFor(m => m.PARENT_ADDRESS, new { @class = "form-control", @id = "PARENT_ADDRESS" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="TELEPHONE_NUMBER">Telephone Number</label>
-                                    @Html.TextBoxFor(m => m.TELEPHONE_NUMBER, new { @class = "form-control", @id = "TELEPHONE_NUMBER" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="CANDIDATE_EMAIL">Email</label>
-                                    @Html.TextBoxFor(m => m.CANDIDATE_EMAIL, new { @class = "form-control", @id = "CANDIDATE_EMAIL" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="CANDIDATE_PHONENUMBER">Phone Number</label>
-                                    @Html.TextBoxFor(m => m.CANDIDATE_PHONENUMBER, new { @class = "form-control", @id = "CANDIDATE_PHONENUMBER" })
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="RESIDENT_CARD_NUMBER">Resident Card Number</label>
-                                    @Html.TextBoxFor(m => m.RESIDENT_CARD_NUMBER, new { @class = "form-control", @id = "RESIDENT_CARD_NUMBER" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="ZIP_CODE">Zip Code</label>
-                                    @Html.TextBoxFor(m => m.ZIP_CODE, new { @class = "form-control", @id = "ZIP_CODE" })
-                                </div>
-
+                            <div class="form-group">
+                                <label for="RESIDENT_CARD_NUMBER">Resident Card Number</label>
+                                @Html.TextBoxFor(m => m.RESIDENT_CARD_NUMBER, new { @class = "form-control", @id = "RESIDENT_CARD_NUMBER" })
+                                @Html.ValidationMessageFor(m => m.RESIDENT_CARD_NUMBER, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="ZIP_CODE">Zip Code</label>
+                                @Html.TextBoxFor(m => m.ZIP_CODE, new { @class = "form-control", @id = "ZIP_CODE" })
+                            </div>
 
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
@@ -130,12 +118,13 @@
                                     <label class="custom-file-label" for="file_cv">Choose file Cv</label>
                                 </div>
                             </div>
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_CV, null, new { @class = "text-danger" })
 
+                            </div>
                         </div>
-
                         @*Right Side*@
                         <div class="col-sm">
-
                             <div class="form-group">
                                 <label for="GENDER_ID">MARITAL_STATUS_ID</label>
                                 <select class="form-control" id="MARITAL_STATUS_ID" name="MARITAL_STATUS_ID">
@@ -145,7 +134,6 @@
                                     }
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="POSITION">Position</label>
                                 <select class="form-control" id="POSITION" name="POSITION">
@@ -157,12 +145,10 @@
                                     }
                                 </select>
                             </div>
-
-                                <div class="form-group">
-                                    <label for="RECOMENDATION">Recomendation</label>
-                                    @Html.TextBoxFor(m => m.RECOMENDATION, new { @class = "form-control", @id = "RECOMENDATION" })
-                                </div>
-
+                            <div class="form-group">
+                                <label for="RECOMENDATION">Recomendation</label>
+                                @Html.TextBoxFor(m => m.RECOMENDATION, new { @class = "form-control", @id = "RECOMENDATION" })
+                            </div>
                             <div class="form-group">
                                 <label for="SOURCE">Religion</label>
                                 <select class="form-control" id="SOURCE" name="SOURCE">
@@ -172,31 +158,26 @@
                                     }
                                 </select>
                             </div>
-
-                                <div class="form-group">
-                                    <label for="CANDDIATE_NPWP_NUMBER">NPWP</label>
-                                    @Html.TextBoxFor(m => m.CANDDIATE_NPWP_NUMBER, new { @class = "form-control", @id = "CANDDIATE_NPWP_NUMBER" })
-                                </div>
-
+                            <div class="form-group">
+                                <label for="CANDDIATE_NPWP_NUMBER">NPWP</label>
+                                @Html.TextBoxFor(m => m.CANDDIATE_NPWP_NUMBER, new { @class = "form-control", @id = "CANDDIATE_NPWP_NUMBER" })
+                            </div>
                             <div class="form-group">
                                 <label for="AVAILABLE_JOIN">Available Join</label>
                                 <input type="date" class="form-control" id="AVAILABLE_JOIN" name="AVAILABLE_JOIN" />
                             </div>
-
-                                <div class="form-group">
-                                    <label for="EXPECTED_sALARY">Excpected Salary</label>
-                                    @Html.TextBoxFor(m => m.EXPECTED_sALARY, new { @class = "form-control", @id = "EXPECTED_sALARY" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="SUITABLE_POSITION">Suitable Position </label>
-                                    @Html.TextBoxFor(m => m.SUITABLE_POSITION, new { @class = "form-control", @id = "SUITABLE_POSITION" })
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="NOTES">NOTES</label>
-                                    @Html.TextAreaFor(m => m.NOTES, new { @class = "form-control", @id = "NOTES" })
-                                </div>
+                            <div class="form-group">
+                                <label for="EXPECTED_sALARY">Excpected Salary</label>
+                                @Html.TextBoxFor(m => m.EXPECTED_sALARY, new { @class = "form-control", @id = "EXPECTED_sALARY" })
+                            </div>
+                            <div class="form-group">
+                                <label for="SUITABLE_POSITION">Suitable Position </label>
+                                @Html.TextBoxFor(m => m.SUITABLE_POSITION, new { @class = "form-control", @id = "SUITABLE_POSITION" })
+                            </div>
+                            <div class="form-group">
+                                <label for="NOTES">NOTES</label>
+                                @Html.TextAreaFor(m => m.NOTES, new { @class = "form-control", @id = "NOTES" })
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -209,53 +190,50 @@
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary">Save</button>
-
                 </div>
                 @*-------------------------------------Education Information----------------------------------------------------------------------------*@
                 <div class="tab-pane fade" id="nav-education_information" role="tabpanel" aria-labelledby="nav-profile-tab">
-
                     <div class="">
                         <div class="row">
                             <div class="col-sm">
                                 <div class="form-group">
                                     <label for="CANDIDATE_LAST_EDUCATON">Universitas/School</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_LAST_EDUCATON, new { @class = "form-control", @id = "CANDIDATE_LAST_EDUCATON" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_LAST_EDUCATON, null, new { @class = "text-danger" })
                                 </div>
-
                                 <div class="form-group">
                                     <label for="CANDIDATE_DEGREE">Degree</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_DEGREE, new { @class = "form-control", @id = "CANDIDATE_DEGREE" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_DEGREE, null, new { @class = "text-danger" })
                                 </div>
-
                                 <div class="form-group">
                                     <label for="EDUCATION_START_DATE">Start Date</label>
                                     <input type="date" class="form-control" id="EDUCATION_START_DATE" name="EDUCATION_START_DATE" />
+                                    @Html.ValidationMessageFor(m => m.EDUCATON_START_DATE, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-sm">
-                                    <div class="form-group">
-                                        <label for="CANDIDATE_MAJOR">Major</label>
-                                        @Html.TextBoxFor(m => m.CANDIDATE_MAJOR, new { @class = "form-control", @id = "CANDIDATE_MAJOR" })
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="CANDIDATE_GPA">GPA</label>
-                                        @Html.TextBoxFor(m => m.CANDIDATE_GPA, new { @class = "form-control", @id = "CANDIDATE_GPA" })
-                                    </div>
-
                                 <div class="form-group">
-                                    <label for="EDUCATION_START_DATE">Start Date</label>
+                                    <label for="CANDIDATE_MAJOR">Major</label>
+                                    @Html.TextBoxFor(m => m.CANDIDATE_MAJOR, new { @class = "form-control", @id = "CANDIDATE_MAJOR" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_MAJOR, null, new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="CANDIDATE_GPA">GPA</label>
+                                    @Html.TextBoxFor(m => m.CANDIDATE_GPA, new { @class = "form-control", @id = "CANDIDATE_GPA" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_GPA, null, new { @class = "text-danger" })
+                                </div>
+                                <div class="form-group">
+                                    <label for="EDUCATION_START_DATE">End Date</label>
                                     <input type="date" class="form-control" id="EDUCATION_START_DATE" name="EDUCATION_START_DATE" />
+                                    @Html.ValidationMessageFor(m => m., null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Save</button>
 
-
                 </div>
-
                 <div class="tab-pane fade" id="nav-skill" role="tabpanel" aria-labelledby="nav-contact-tab">
                     <table class="table">
                         <thead class="thead-light">

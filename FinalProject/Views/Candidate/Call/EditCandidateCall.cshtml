@@ -12,7 +12,6 @@
 
     <h2><center>Candidate | Call | Edit Candidate Call</center></h2>
     <hr class="bg-blue" />
-@Html.ValidationSummary()
 
     <div class="container">
         <nav>
@@ -36,7 +35,7 @@
                             <div class="form-group">
                                 <label for="CandidateName">Full Name</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_NAME, new { @class = "form-control", @id = "CandidateName" })
-                                @Html.ValidationMessageFor(m => m.CANDIDATE_DEGREE, null, new { @class = "text-danger" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_NAME, null, new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
                                 <label for="CandidateName">Gender</label>
@@ -76,8 +75,10 @@
                                     <label class="custom-file-label" for="file_pict">Choose file picture</label>
                                 </div>
                             </div>
-                            @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
-                            <img id="output" width="300" />
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
+                                <img id="output" width="300" />
+                            </div>
                         </div>
 
                         @*mid side form*@
@@ -133,7 +134,10 @@
                                     <label class="custom-file-label" for="file_cv">Choose file Cv</label>
                                 </div>
                             </div>
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
 
+                            </div>
                         </div>
 
                         @*Right Side*@

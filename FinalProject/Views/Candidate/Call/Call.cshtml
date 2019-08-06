@@ -128,15 +128,15 @@
                     <hr class="bg-blue" />
 
                     <!-- Check Link for Pagination Active-->
-                    @{ var link = Convert.ToInt32(Request.Url.ToString().Split('/').Last());
-                    }
+                    @*@{ var link = Convert.ToInt32(Request.Url.ToString().Split('/').Last());
+                    }*@
 
 
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
                             @for (int i = 1; i <= Convert.ToInt16(ViewBag.DataView["PageCount"]); i++)
                             {
-                                <li class="page-item @(link == i? "active":"" )"><a class="page-link " href="~/candidate/call/read/@i">@i</a></li>
+                                <li class="page-item"><a class="page-link " href="~/candidate/call/read/@i">@i</a></li>
                             }
                         </ul>
                     </nav>

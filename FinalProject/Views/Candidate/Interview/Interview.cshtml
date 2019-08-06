@@ -4,7 +4,8 @@
     @ViewBag.DataView["title"]
 }
 @section content{
-
+    <h2><center>Candidate | Interview</center></h2>
+    <hr class="bg-blue" />
     <!-- Alert -->
     @if (TempData.Peek("message") != null)
     {
@@ -15,7 +16,6 @@
             </button>
         </div>
     }
-
     <!-- Modal Detail -->
     <div class="modal fade" id="Modaldetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -53,9 +53,6 @@
             </div>
         </div>
     </div>
-
-
-
 
 
     <div class="container">
@@ -139,5 +136,5 @@
                     </nav>
                 </div>
             </div>
-    </div>
+        </div>
 }

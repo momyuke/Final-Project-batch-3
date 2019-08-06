@@ -8,7 +8,6 @@
     <h2><center>Candidate | Called | Edit Candidate Called</center></h2>
 
     <hr class="bg-blue" />
-    @Html.ValidationSummary()
     <div class="container">
         <nav>
             <div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -48,7 +47,7 @@
                                 @Html.ValidationMessageFor(m => m.CANDIDATE_PLACE_BIRTH, null, new { @class = "text-danger" })
                             </div>
                             <div class="form-group">
-                                <label for="CANDIDATE_PLACE_BIRTH">BIRTH DATE</label>
+                                <label for="CANDIDATE_PLACE_BIRTH">Birth Date</label>
                                 <input type="datetime" value="@Convert.ToDateTime(Model.CANDIDATE_BIRTH_DATE).ToString("yyyy-MM-dd")" name="CANDIDATE_BIRTH_DATE" class="form-control" />
                             </div>
                             <div class="form-group">
@@ -121,6 +120,10 @@
                                     <input type="file" class="custom-file-input" id="file_cv" aria-describedby="file_pict" name="Cv">
                                     <label class="custom-file-label" for="file_cv">Choose file Cv</label>
                                 </div>
+                            </div>
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
+
                             </div>
                         </div>
                         @*Right Side*@

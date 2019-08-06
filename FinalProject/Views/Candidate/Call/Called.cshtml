@@ -174,9 +174,9 @@
                                     <td>@candidate.CANDIDATE_STATE_NAME</td>
                                     <td>@candidate.NOTES</td>
                                     <td>
-                                        <button type="button" class="btn btn-success  input-sm" data-toggle="modal" data-target="#Modaldetails">Details</button>
+                                        <a class="btn btn-success" href="~/candidate/preselection/read/detailcandidate/@candidate.CANDIDATE_ID">Details</a>
+                                        <a href="~/candidate/call/update/called/next/@candidate.CANDIDATE_ID" class="btn btn-info input-sm @MenuUtils.CheckButtonAcc(2,14)">Next</a>
                                     </td>
-                                    <td><a href="~/candidate/call/edit" class="btn btn-info input-sm">Edit</a></td>
                                 </tr>
                             }
                         </tbody>

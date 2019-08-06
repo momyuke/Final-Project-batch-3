@@ -118,6 +118,10 @@
                                     <label class="custom-file-label" for="file_cv">Choose file Cv</label>
                                 </div>
                             </div>
+                            <div>
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_CV, null, new { @class = "text-danger" })
+
+                            </div>
                         </div>
                         @*Right Side*@
                         <div class="col-sm">
