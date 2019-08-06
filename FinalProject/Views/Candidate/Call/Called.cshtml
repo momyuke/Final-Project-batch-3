@@ -62,7 +62,7 @@
             </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
-            <div class="tab-pane fade show active col mt-3" id="nav-call" role="tabpanel" aria-labelledby="nav-home-tab">
+            <div class="tab-pane fade show col mt-3" id="nav-call" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="">
                     <!-- Search form -->
                     <form class="form-inline md-form form-sm mt-4" action="~/candidate/call/called" id="FormFilter" method="post">
@@ -122,6 +122,65 @@
                             }
                         </tbody>
                     </table>
+                    
+                </div>
+            </div>
+            <div class="tab-pane fade show active" id="nav-called" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="">
+                    <!-- Search form -->
+                    <form class="form-inline md-form form-sm mt-4" action="~/candidate/call/called" id="FormFilter" method="post">
+                        <input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Search" aria-label="Search" value="" name="Keyword">
+                        <i class="fas fa-search mr-3" aria-hidden="true"></i>
+                        <select class="form-control form-control-sm mr-3 float-right" name="POSITION" id="ListPosition">
+                            <option value="all">All</option>
+                            @foreach (var pos in ViewBag.DataView["ListPosition"])
+                            {
+                                <option value="@pos.JOBPOSITION_NAME">@pos.JOBPOSITION_NAME</option>
+                            }
+                        </select>
+                        <select class="form-control form-control-sm mr-3 float-right" name="CANDIDATE_STATE" id="ListState">
+                            <option value="0">All</option>
+                            @foreach (var st in ViewBag.DataView["ListState"])
+                            {
+                                <option value="@st.ID">@st.STATE_NAME</option>
+                            }
+                        </select>
+                        <input type="submit" class="btn btn-primary mr-3 float-right" value="Filter" name="filter" />
+                    </form>
+                    <table class="table table-striped table-bordered table-sm table-responsive mt-4" cellspacing="0" mt-4">
+                        <thead class="table-primary">
+                            <tr>
+                                <th scope="col">Nama</th>
+                                <th scope="col">Potition</th>
+                                <th>Source</th>
+                                <th>Number</th>
+                                <th>Email</th>
+                                <th>Caller PIC</th>
+                                <th>State</th>
+                                <th>Preselection Notes</th>
+                                <th colspan="2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var candidate in Model)
+                            {
+                                <tr>
+                                    <td>@candidate.CANDIDATE_NAME</td>
+                                    <td>@candidate.CANDIDATE_SUITABLE_POSITION</td>
+                                    <td>@candidate.CANDIDATE_SOURCE</td>
+                                    <td>@candidate.CANDIDATE_PHONE</td>
+                                    <td>@candidate.CANDIDATE_EMAIL</td>
+                                    <td>@candidate.PIC_FULL_NAME</td>
+                                    <td>@candidate.CANDIDATE_STATE_NAME</td>
+                                    <td>@candidate.NOTES</td>
+                                    <td>
+                                        <button type="button" class="btn btn-success  input-sm" data-toggle="modal" data-target="#Modaldetails">Details</button>
+                                    </td>
+                                    <td><a href="~/candidate/call/edit" class="btn btn-info input-sm">Edit</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                     <hr class="bg-blue" />
                     <nav aria-label="Page navigation example">
                         <ul class="pagination">
@@ -133,7 +192,6 @@
                     </nav>
                 </div>
             </div>
-            
         </div>
     </div>
 }

@@ -208,7 +208,7 @@ namespace FinalProject.Controllers
                 int CandidateId = Convert.ToInt16(id);
                 CandidateDTO DataCandidate = Manage_CandidateDTO.GetDataCandidate().FirstOrDefault(d => d.ID == CandidateId);
 
-                if (DataCandidate == null) return Redirect("~/candidate/preselection");
+                if (DataCandidate == null) return Redirect("~/candidate/preselection/read");
 
                 ViewBag.DataView = new Dictionary<string, object>()
                 {
@@ -230,8 +230,8 @@ namespace FinalProject.Controllers
         [Route("candidate/preselection/update/candidate/process")]
         public ActionResult CandidateEdit(CandidateDTO Data, HttpPostedFileBase Pict = null, HttpPostedFileBase Cv = null)
         {
-            try
-            {
+            //try
+            //{
                 if (ModelState.IsValid)
                 {
                     var ProcessEdit = Manage_CandidateDTO.EditCandidate(Data, Pict, Cv);
@@ -248,7 +248,7 @@ namespace FinalProject.Controllers
                         TempData.Add("type", "warning");
                     }
 
-                    return Redirect("~/candidate/preselection/read/1");
+                    return Redirect("~/candidate/preselection/read/");
                 }
                 CandidateDTO DataCandidate = Manage_CandidateDTO.GetDataCandidate().FirstOrDefault(d => d.ID == Data.ID);
                 ViewBag.DataView = new Dictionary<string, object>()
@@ -258,11 +258,11 @@ namespace FinalProject.Controllers
                 };
 
                 return View("Preselection/EditCandidate", DataCandidate);
-            }
-            catch
-            {
-                return Redirect("~/auth/error");
-            }
+            //}
+            //catch
+            //{
+            //    return Redirect("~/auth/error");
+            //}
         }
 
         //************************************************* JOB EXPERIENCE OF CANDIDATE *****************************************************
@@ -409,7 +409,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 2(call) or 18(called) (state in step call)
               
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 2).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>
@@ -607,7 +607,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 2(call) or 18(called) (state in step call)
                 
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 8).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>
@@ -767,7 +767,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 19(interview process)
                 
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 19).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>
@@ -975,7 +975,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 15(hold), 16(pass), 17(drop)
                 
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 15 || sh.CANDIDATE_STATE == 16 || sh.CANDIDATE_STATE == 17).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>
@@ -1134,7 +1134,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 15(hold), 16(pass), 17(drop)
                 
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 16).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>
@@ -1144,7 +1144,7 @@ namespace FinalProject.Controllers
                 ViewBag.DataView = new Dictionary<string, object>{
                     {"title","Interview"},
                     {"ListPosition",Manage_JobPositionDTO.GetData()},
-                    {"PageCount",PageCount}
+                    {"PageCount", PageCount}
                     };
 
                 //============================ process searchng ============================
@@ -1268,7 +1268,7 @@ namespace FinalProject.Controllers
                 //note : data in this view especialy for candidate where state_id is 14(offering or 6(sent to client))
                
                 int perPage = 5;
-                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 3).ToList().Count();
+                float DataCount = db.TB_CANDIDATE_SELECTION_HISTORY.Where(sh => sh.CANDIDATE_STATE == 6 || sh.CANDIDATE_STATE == 14).ToList().Count();
                 int PageCount = Convert.ToInt16(Math.Ceiling(DataCount / 5));
                 int idx = (i == null ? 0 : (perPage * int.Parse(i) - perPage));
                 List<CandidateSelectionHistoryDTO> ListCandidate = Manage_CandidateSelectionHistoryDTO.GetDataSelectionHistory().Where(d =>

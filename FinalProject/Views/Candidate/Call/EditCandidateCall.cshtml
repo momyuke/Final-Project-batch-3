@@ -28,18 +28,16 @@
                 <div class="tab-pane fade show active" id="nav-personal_information" role="tabpanel" aria-labelledby="nav-home-tab">
                     <div class="row">
                         <div class="col-sm">
-
                             <div class="form-group">
                                 <label for="CandidateName">ID</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_ID, new { @class = "form-control", @id = "CandidateId" })
                             </div>
 
-
                             <div class="form-group">
                                 <label for="CandidateName">Full Name</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_NAME, new { @class = "form-control", @id = "CandidateName" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_DEGREE, null, new { @class = "text-danger" })
                             </div>
-
                             <div class="form-group">
                                 <label for="CandidateName">Gender</label>
                                 <select class="form-control" id="GENDER" name="GENDER_ID">
@@ -49,17 +47,16 @@
                                     }
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label for="CANDIDATE_PLACE_BIRTH">Place Of Birth</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_PLACE_BIRTH, new { @class = "form-control", @id = "CANDIDATE_PLACE_BIRTH" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PLACE_BIRTH, null, new { @class = "text-danger" })
                             </div>
-
                             <div class="form-group">
-                                <label for="CANDIDATE_PLACE_BIRTH">BIRTH DATE</label>
+                                <label for="CANDIDATE_PLACE_BIRTH">Birth Date</label>
                                 <input type="datetime" value="@Convert.ToDateTime(Model.CANDIDATE_BIRTH_DATE).ToString("yyyy-MM-dd")" name="CANDIDATE_BIRTH_DATE" class="form-control" />
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_DEGREE, null, new { @class = "text-danger" })
                             </div>
-
                             <div class="form-group">
                                 <label for="GENDER_ID">Religion</label>
                                 <select class="form-control" id="RELIGION_ID" name="RELIGION_ID">
@@ -69,7 +66,7 @@
                                     }
                                 </select>
                             </div>
-                            
+
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="file_pict">Upload</span>
@@ -79,7 +76,8 @@
                                     <label class="custom-file-label" for="file_pict">Choose file picture</label>
                                 </div>
                             </div>
-
+                            @Html.ValidationMessageFor(m => m.CANDIDATE_PHOTO, null, new { @class = "text-danger" })
+                            <img id="output" width="300" />
                         </div>
 
                         @*mid side form*@
@@ -88,6 +86,7 @@
                             <div class="form-group">
                                 <label for="CANDIDATE_CURRENT_ADDRESS">Address</label>
                                 @Html.TextAreaFor(m => m.CANDIDATE_CURRENT_ADDRESS, new { @class = "form-control", @id = "CANDIDATE_CURRENT_ADDRESS" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_CURRENT_ADDRESS, null, new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group">
@@ -103,17 +102,20 @@
                             <div class="form-group">
                                 <label for="CANDIDATE_EMAIL">Email</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_EMAIL, new { @class = "form-control", @id = "CANDIDATE_EMAIL" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_EMAIL, null, new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group">
                                 <label for="CANDIDATE_PHONENUMBER">Phone Number</label>
                                 @Html.TextBoxFor(m => m.CANDIDATE_PHONENUMBER, new { @class = "form-control", @id = "CANDIDATE_PHONENUMBER" })
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_PHONENUMBER, null, new { @class = "text-danger" })
                             </div>
 
 
                             <div class="form-group">
                                 <label for="RESIDENT_CARD_NUMBER">Resident Card Number</label>
                                 @Html.TextBoxFor(m => m.RESIDENT_CARD_NUMBER, new { @class = "form-control", @id = "RESIDENT_CARD_NUMBER" })
+                                @Html.ValidationMessageFor(m => m.RESIDENT_CARD_NUMBER, null, new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group">
@@ -138,7 +140,7 @@
                         <div class="col-sm">
 
                             <div class="form-group">
-                                <label for="GENDER_ID">MARITAL_STATUS_ID</label>
+                                <label for="GENDER_ID">Marital Status</label>
                                 <select class="form-control" id="MARITAL_STATUS_ID" name="MARITAL_STATUS_ID">
                                     @foreach (var d in Manage_MaritalStatusDTO.GetData())
                                     {
@@ -192,6 +194,7 @@
                             <div class="form-group">
                                 <label for="AVAILABLE_JOIN">Interview Date</label>
                                 <input type="date" class="form-control" id="CANDIDATE_INTERVIEW_DATE" name="CANDIDATE_INTERVIEW_DATE" />
+                                @Html.ValidationMessageFor(m => m.CANDIDATE_INTERVIEW_DATE, null, new { @class = "text-danger" })
                             </div>
 
                             <div class="form-group">
@@ -229,16 +232,19 @@
                                 <div class="form-group">
                                     <label for="CANDIDATE_LAST_EDUCATON">Universitas/School</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_LAST_EDUCATON, new { @class = "form-control", @id = "CANDIDATE_LAST_EDUCATON" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_LAST_EDUCATON, null, new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group">
                                     <label for="CANDIDATE_DEGREE">Degree</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_DEGREE, new { @class = "form-control", @id = "CANDIDATE_DEGREE" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_DEGREE, null, new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group">
                                     <label for="EDUCATION_START_DATE">Start Date</label>
                                     <input type="date" class="form-control" id="EDUCATION_START_DATE" name="EDUCATION_START_DATE" />
+                                    @Html.ValidationMessageFor(m => m.EDUCATON_START_DATE, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -246,16 +252,19 @@
                                 <div class="form-group">
                                     <label for="CANDIDATE_MAJOR">Major</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_MAJOR, new { @class = "form-control", @id = "CANDIDATE_MAJOR" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_MAJOR, null, new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group">
                                     <label for="CANDIDATE_GPA">GPA</label>
                                     @Html.TextBoxFor(m => m.CANDIDATE_GPA, new { @class = "form-control", @id = "CANDIDATE_GPA" })
+                                    @Html.ValidationMessageFor(m => m.CANDIDATE_GPA, null, new { @class = "text-danger" })
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="EDUCATION_START_DATE">Start Date</label>
+                                    <label for="EDUCATION_START_DATE">End Date</label>
                                     <input type="date" class="form-control" id="EDUCATION_START_DATE" name="EDUCATION_START_DATE" />
+                                    @Html.ValidationMessageFor(m => m.EDUCATON_END_DATE, null, new { @class = "text-danger" })
                                 </div>
                             </div>
                         </div>

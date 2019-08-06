@@ -116,15 +116,13 @@
                                     <td>@candidate.NOTES</td>
                                     <td>
                                         <a class="btn btn-success" href="~/candidate/preselection/read/detailcandidate/@candidate.CANDIDATE_ID">Details</a>
-
                                         <button type="button" class="btn btn-primary btn_edit @MenuUtils.CheckButtonAcc(2,17)" data-toggle="modal" data-target="#ModalEdit"
                                                 data-selection_id="@candidate.ID"
                                                 data-candidate_id="@candidate.CANDIDATE_ID"
                                                 data-client_id="@Manage_DeliveryHistoryDTO.GetData().OrderByDescending(d => d.START_DATE).FirstOrDefault(d => d.CANDIDATE_ID == candidate.CANDIDATE_ID).CLIENT_ID"
                                                 data-state_id="@candidate.CANDIDATE_STATE"
                                                 data-delivery_id="@Manage_DeliveryHistoryDTO.GetData().OrderByDescending(d => d.START_DATE).FirstOrDefault(d => d.CANDIDATE_ID == candidate.CANDIDATE_ID).DELIVERY_ID"
-                                                data-id="@Manage_DeliveryHistoryDTO.GetData().OrderByDescending(d => d.START_DATE).FirstOrDefault(d => d.CANDIDATE_ID == candidate.CANDIDATE_ID).CANDIDATE_ID"
-                                                >
+                                                data-id="@Manage_DeliveryHistoryDTO.GetData().OrderByDescending(d => d.START_DATE).FirstOrDefault(d => d.CANDIDATE_ID == candidate.CANDIDATE_ID).CANDIDATE_ID">
                                             Edit
                                         </button>
                                     </td>
@@ -132,10 +130,15 @@
                             }
                         </tbody>
                     </table>
-                    <input type="button" class="btn btn-primary mb-3" name="" value="<<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value="<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">>" />
+                    <hr class="bg-blue" />
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            @for (int i = 1; i <= Convert.ToInt16(ViewBag.DataView["PageCount"]); i++)
+                            {
+                                <li class="page-item"><a class="page-link" href="~/candidate/delivery/read/suggest/@i">@i</a></li>
+                            }
+                        </ul>
+                    </nav>
                 </div>
             </div>
          </div>

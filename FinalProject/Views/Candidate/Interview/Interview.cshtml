@@ -69,26 +69,26 @@
             <div class="tab-pane fade show active col mt-3" id="nav-call" role="tabpanel" aria-labelledby="nav-home-tab">
                 <div class="">
                     <!-- Search form -->
-    <form class="form-inline md-form form-sm mt-4" action="~/candidate/interview" id="FormFilter" method="post">
-        <input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Search" aria-label="Search" value="" name="Keyword">
-        <i class="fas fa-search mr-3" aria-hidden="true"></i>
-        <select class="form-control form-control-sm mr-3 float-right" name="POSITION" id="ListPosition">
-            <option value="all">All</option>
-            @foreach (var pos in ViewBag.DataView["ListPosition"])
-            {
-                <option value="@pos.JOBPOSITION_NAME">@pos.JOBPOSITION_NAME</option>
-            }
-        </select>
-        <select class="form-control form-control-sm mr-3 float-right" name="CANDIDATE_STATE" id="ListState">
-            <option value="0">All</option>
-            @foreach (var st in ViewBag.DataView["ListState"])
-            {
-                <option value="@st.ID">@st.STATE_NAME</option>
-            }
-        </select>
-        <input type="submit" class="btn btn-primary mr-3 float-right" value="Filter" name="filter" />
-    </form>
-                    <table class="table table-striped table-bordered table-sm mt-4" cellspacing="0">
+                    <form class="form-inline md-form form-sm mt-4" action="~/candidate/interview" id="FormFilter" method="post">
+                        <input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Search" aria-label="Search" value="" name="Keyword">
+                        <i class="fas fa-search mr-3" aria-hidden="true"></i>
+                        <select class="form-control form-control-sm mr-3 float-right" name="POSITION" id="ListPosition">
+                            <option value="all">All</option>
+                            @foreach (var pos in ViewBag.DataView["ListPosition"])
+                            {
+                                <option value="@pos.JOBPOSITION_NAME">@pos.JOBPOSITION_NAME</option>
+                            }
+                        </select>
+                        <select class="form-control form-control-sm mr-3 float-right" name="CANDIDATE_STATE" id="ListState">
+                            <option value="0">All</option>
+                            @foreach (var st in ViewBag.DataView["ListState"])
+                            {
+                                <option value="@st.ID">@st.STATE_NAME</option>
+                            }
+                        </select>
+                        <input type="submit" class="btn btn-primary mr-3 float-right" value="Filter" name="filter" />
+                    </form>
+                    <table class="table table-striped table-bordered table-sm table-responsive mt-4" cellspacing="0">
                         <thead>
                             <tr>
                                 <th scope="col">Nama</th>
@@ -108,30 +108,35 @@
                         <tbody>
                             @foreach (var candidate in Model)
                             {
-                            <tr>
-                                <td>@candidate.CANDIDATE_NAME</td>
-                                <td>@candidate.CANDIDATE_APPLIED_POSITION</td>
-                                <td>@candidate.CANDIDATE_SUITABLE_POSITION</td>
-                                <td>@candidate.CANDIDATE_SOURCE</td>
-                                <td>@candidate.CANDIDATE_PHONE</td>
-                                <td>@candidate.CANDIDATE_EMAIL</td>
-                                <td>@candidate.PIC_FULL_NAME</td>
-                                <td>@Html.Encode(string.Format("{0:dd/MM/yyyy}", candidate.CANDIDATE_SOURCING_DATE))</td>
-                                <td>@candidate.CANDIDATE_INTERVIEW_DATE</td>
-                                <td>@candidate.CANDIDATE_STATE_NAME</td>
-                                <td>@candidate.NOTES</td>
-                                <td>
-                                    <a class="btn btn-success" href="~/candidate/preselection/read/detailcandidate/@candidate.CANDIDATE_ID">Details</a>
-                                    <a href="~/candidate/interview/update/next/@candidate.CANDIDATE_ID" class="btn btn-primary input-sm @MenuUtils.CheckButtonAcc(2,15)">Next</a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>@candidate.CANDIDATE_NAME</td>
+                                    <td>@candidate.CANDIDATE_APPLIED_POSITION</td>
+                                    <td>@candidate.CANDIDATE_SUITABLE_POSITION</td>
+                                    <td>@candidate.CANDIDATE_SOURCE</td>
+                                    <td>@candidate.CANDIDATE_PHONE</td>
+                                    <td>@candidate.CANDIDATE_EMAIL</td>
+                                    <td>@candidate.PIC_FULL_NAME</td>
+                                    <td>@Html.Encode(string.Format("{0:dd/MM/yyyy}", candidate.CANDIDATE_SOURCING_DATE))</td>
+                                    <td>@candidate.CANDIDATE_INTERVIEW_DATE</td>
+                                    <td>@candidate.CANDIDATE_STATE_NAME</td>
+                                    <td>@candidate.NOTES</td>
+                                    <td>
+                                        <a class="btn btn-success" href="~/candidate/preselection/read/detailcandidate/@candidate.CANDIDATE_ID">Details</a>
+                                        <a href="~/candidate/interview/update/next/@candidate.CANDIDATE_ID" class="btn btn-primary input-sm @MenuUtils.CheckButtonAcc(2,15)">Next</a>
+                                    </td>
+                                </tr>
                             }
                         </tbody>
                     </table>
-                    <input type="button" class="btn btn-primary mb-3" name="" value="<<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value="<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">>" />
+                    <hr class="bg-blue" />
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            @for (int i = 1; i <= Convert.ToInt16(ViewBag.DataView["PageCount"]); i++)
+                            {
+                                <li class="page-item"><a class="page-link" href="~/candidate/interview/read/interviewed/@i">@i</a></li>
+                            }
+                        </ul>
+                    </nav>
                 </div>
             </div>
     </div>

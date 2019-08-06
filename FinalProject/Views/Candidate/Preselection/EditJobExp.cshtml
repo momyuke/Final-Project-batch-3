@@ -27,32 +27,39 @@
                 <div class="form-group ml-3">
                     <label class="title control-label">Company Name</label>
                     <input type="text" value="@Model.COMPANY_NAME" class="form-control" name="COMPANY_NAME" />
+                    @Html.ValidationMessageFor(m => m.COMPANY_NAME, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group ml-3">
                     <label class="title control-label">Industry</label>
                     <input type="text" value="@Model.INDUSTRIES" class="form-control" name="INDUSTRIES" />
+                    @Html.ValidationMessageFor(m => m.INDUSTRIES, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group ml-3">
                     <label class="title control-label">Potition</label>
                     <input type="text" value="@Model.CANDIDATE_POSITION" class="form-control" name="CANDIDATE_POSITION" />
+                    @Html.ValidationMessageFor(m => m.CANDIDATE_POSITION, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group ml-3">
                     <label class="title control-label">Job Desc</label>
                     <textarea class="form-control" value="@Model.JOBDESC" name="JOBDESC">@Model.JOBDESC</textarea>
+                    @Html.ValidationMessageFor(m => m.JOBDESC, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group ml-3">
                     <label class="title control-label">Skill</label>
                     <textarea class="form-control" @Model.SKILL_NAME name="SKILL_NAME">@Model.SKILL_NAME</textarea>
+                    @Html.ValidationMessageFor(m => m.SKILL_NAME, null, new { @class = "text-danger" })
                 </div>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col">
                 <div class="form-group">
                     <label class="title control-label">Start Date</label>
                     <input type="datetime" value="@Convert.ToDateTime(Model.START_DATE).ToString("dd-mm-yyyy")" class="form-control" name="START_DATE" />
+                    @Html.ValidationMessageFor(m => m.START_DATE, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label class="title control-label">End Date</label>
                     <input type="datetime" value="@Convert.ToDateTime(Model.END_DATE).ToString("dd-mm-yyyy")" class="form-control" name="END_DATE" />
+                    @Html.ValidationMessageFor(m => m.END_DATE, null, new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <label class="title control-label">Salary</label>

@@ -123,10 +123,19 @@
                             }
                         </tbody>
                     </table>
-                    <input type="button" class="btn btn-primary mb-3" name="" value="<<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value="<" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">" />
-                    <input type="button" class="btn btn-primary ml-3 mb-3" name="" value=">>" />
+
+                    <!-- Check Link for Pagination Active-->
+                   
+
+                    <hr class="bg-blue" />
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            @for (int i = 1; i <= Convert.ToInt16(ViewBag.DataView["PageCount"]); i++)
+                            {
+                                <li class="page-item"><a class="page-link" href="~/candidate/delivery/read/@i">@i</a></li>
+                            }
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
